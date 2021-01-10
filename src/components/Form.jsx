@@ -1,13 +1,14 @@
 import React, { useState, useRef } from "react"
 
 const Form = ({ fetchLatestCommit }) => {
-  const now = new Date()
-
   const padZeros  = (str, len) => (
     String(str).length >= len ? str : String(str).padStart(len, '0')
   )
 
-  const [date, setDate] = useState(`${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${now.getDate()}`)
+  const now = new Date()
+  const today = `${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${now.getDate()}`
+
+  const [date, setDate] = useState(today)
   const usernameRef = useRef(null)
   const repoRef = useRef(null)
 
@@ -19,6 +20,9 @@ const Form = ({ fetchLatestCommit }) => {
     e.preventDefault()
     const { value: username } = usernameRef.current
     const { value: repo } = repoRef.current
+    usernameRef.current.value = ""
+    repoRef.current.value = ""
+    setDate(today)
     fetchLatestCommit(username, repo, date)
   }
   

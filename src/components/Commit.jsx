@@ -15,9 +15,16 @@ const Commit = ({ username, repo, commitSha, dateTime, message, latest }) => {
         </div>
         {commitSha}
       </h5>
-      <div className="card-body">
+      <div className="card-body text-start">
         <p className="card-text">{message}</p>
-        <a target="_blank" href={`https://github.com/${username}/${repo}/commit/${commitSha}`} className="btn btn-primary">Commit page</a>
+        <a
+          target="_blank"
+          href={`https://github.com/${username}/${repo}/commit/${commitSha}`}
+          className="btn"
+          style={{ backgroundColor: "#3B82F6", color: "white" }}
+        >
+          Commit page
+        </a>
       </div>
     </div>
   )

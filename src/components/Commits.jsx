@@ -20,13 +20,24 @@ const Commits = ({ loading, commits, username, repo }) => {
     const mn = +rawTime[1]
     const sec = +rawTime[2]
     const dateTime = `${rawDate} ${hr}:${mn}:${sec}`
-    console.log(message)
-    return <Commit username={username} repo={repo} commitSha={commitSha} dateTime={dateTime} message={message} latest={index === 0} />
+    return (
+      <Commit
+        key={commit.commit.committer.date}
+        username={username}
+        repo={repo}
+        commitSha={commitSha}
+        dateTime={dateTime}
+        message={message}
+        latest={index === 0}
+      />
+    )
   })
   
   return (
-    <div className="text-center mt-5">
-      <h2>User: <span class="badge bg-primary">{username}</span> Repository: <span class="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span>
+    <div className="mt-5">
+      <h2 className="d-flex justify-content-center align-items-center flex-column flex-md-row mb-4 mb-md-2">
+        <span className="mx-0 mx-sm-2 my-2 my-sm-0">User: <span className="badge bg-primary">{username}</span></span>
+        <span>Repository: <span class="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span></span>
       </h2>
       <div className="d-flex flex-wrap justify-content-center">
         {commitCards}
