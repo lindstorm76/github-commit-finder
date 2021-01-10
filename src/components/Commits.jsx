@@ -1,7 +1,13 @@
 import React from "react"
 import Commit from "./Commit"
+import Animation from "./Animation"
+import loadingAnimation from "../animations/loading.json"
 
-const Commits = ({ commits, username, repo }) => {
+const Commits = ({ loading, commits, username, repo }) => {
+
+  if (loading && commits === null) return <Animation animationData={loadingAnimation} width={200} height={200} />
+  
+  if (commits === null) return null
 
   const commitCards = commits.map((commit, index) => {
     const commitUrl = commit.commit.url.split("/")
@@ -15,12 +21,12 @@ const Commits = ({ commits, username, repo }) => {
     const sec = +rawTime[2]
     const dateTime = `${rawDate} ${hr}:${mn}:${sec}`
     console.log(message)
-    return <Commit commitSha={commitSha} dateTime={dateTime} message={message} latest={index === 0} />
+    return <Commit username={username} repo={repo} commitSha={commitSha} dateTime={dateTime} message={message} latest={index === 0} />
   })
   
   return (
     <div className="text-center mt-5">
-      <h2>User: <span class="badge bg-primary">{username}</span> Repository: <span class="badge" style={{ backgroundColor: "#6B7280" }}>{repo}</span>
+      <h2>User: <span class="badge bg-primary">{username}</span> Repository: <span class="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span>
       </h2>
       <div className="d-flex flex-wrap justify-content-center">
         {commitCards}
