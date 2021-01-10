@@ -8,8 +8,10 @@ const App = () => {
   const [username, setUsername] = useState(null)
   const [repo, setRepo] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [notFound, setNotFound] = useState(false)
 
   const fetchLatestCommit = async (username, repo, date) => {
+    setNotFound(false)
     setLoading(true)
     setUsername(username)
     setRepo(repo)
@@ -21,6 +23,7 @@ const App = () => {
       })
     })
     const data = await res.json()
+     if (data.message === "Not Found") return setNotFound(true)
     setCommits(data)
     setLoading(false)
   }
@@ -30,7 +33,7 @@ const App = () => {
         <h1 className="mt-4">Github Commit Finder</h1>
         <Form fetchLatestCommit={fetchLatestCommit} />
       </div>
-      <Commits loading={loading} commits={commits} username={username} repo={repo} />
+      <Commits notFound={notFound} loading={loading} commits={commits} username={username} repo={repo} />
     </>
   )
 }

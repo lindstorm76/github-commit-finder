@@ -3,7 +3,13 @@ import Commit from "./Commit"
 import Animation from "./Animation"
 import loadingAnimation from "../animations/loading.json"
 
-const Commits = ({ loading, commits, username, repo }) => {
+const Commits = ({ notFound, loading, commits, username, repo }) => {
+
+  if (notFound) return (
+    <h1 className="text-muted text-center mt-5">
+      Username or repository not found
+    </h1>
+  )
 
   if (loading && commits === null) return <Animation animationData={loadingAnimation} width={200} height={200} />
   
