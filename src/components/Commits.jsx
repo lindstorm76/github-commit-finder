@@ -15,7 +15,7 @@ const Commits = ({ commits }) => {
     const sec = +rawTime[2]
     const dateTime = `${rawDate} ${hr}:${mn}:${sec}`
     const username = commit.author.login
-    return <Commit username={username} commitSha={commitSha} dateTime={dateTime} message={message} latest={index === 0} />
+    return <Commit username={username} repo={commitUrl[5]} commitSha={commitSha} dateTime={dateTime} message={message} latest={index === 0} />
   })
 
   console.log(commits[0])
