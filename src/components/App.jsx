@@ -6,10 +6,14 @@ import Commit from "./Commit"
 const App = () => {
 
   const [commits, setCommits] = useState(null)
+  const [username, setUsername] = useState(null)
+  const [repo, setRepo] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const fetchLatestCommit = async (username, repo, date) => {
     setLoading(true)
+    setUsername(username)
+    setRepo(repo)
     const res = await fetch(`https://api.github.com/repos/${username}/${repo}/commits?until=${date}T23:59:59`, { 
       method: 'GET', 
       headers: new Headers({
@@ -29,7 +33,7 @@ const App = () => {
         <h1 className="mt-4">Github Commit Finder</h1>
         <Form fetchLatestCommit={fetchLatestCommit} />
       </div>
-      {commits && <Commits commits={commits} />}
+      {commits && <Commits commits={commits} username={username} repo={repo} />}
     </>
   )
 }
