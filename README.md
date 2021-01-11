@@ -33,6 +33,10 @@ This project was developed primarily on **React.js** (with Vanilla JS), **Bootst
    ▶ A button that redirects you to the commit page
    
  ![commit-card](https://github.com/lindstorm75/github-commit-finder/blob/main/images/commit-card.PNG)
+ 
+ 🔵 The commands card that provides you ```clone``` and ```checkout``` commands for the current repository and the commit you clicked on
+ 
+ ![commands]( https://github.com/lindstorm75/github-commit-finder/blob/main/images/commands.PNG)
 
 🔵 The site is fully responsive, you can use it on mobile
 
