@@ -36,14 +36,13 @@ This project was developed primarily on **React.js** (with Vanilla JS), **Bootst
 
 🔵 The site is fully responsive, you can use it on mobile
 
- ![mobile-landing-page](https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-landing-page.PNG)
- ![mobile-search-result](https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-result.PNG)
+ <image src="https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-landing-page.PNG" alt="mobile-landing-page" height="700" > <image src="https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-search-result.PNG" alt="mobile-search-result" height="700" >
  
 ## Hosting
 
 The project is hosted via [Vercel](https://vercel.com/) as it is a static site.
 
-[github-commit-finder.vercel.app](github-commit-finder.vercel.app)
+[github-commit-finder.vercel.app](https://github-commit-finder.vercel.app)
 
 [https://github-commit-finder.lindstorm75.vercel.app](https://github-commit-finder.lindstorm75.vercel.app/)
 
