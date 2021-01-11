@@ -27,6 +27,7 @@ const App = () => {
     const data = await res.json()
     if (data.message === "Not Found") {
       setNotFound(true)
+      setLoading(false)
       setCommits([])
       setTimeout(() => setNotFound(false), 3000)
       return
