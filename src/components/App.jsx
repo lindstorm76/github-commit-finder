@@ -10,7 +10,11 @@ const App = () => {
   const [repo, setRepo] = useState(null)
   const [loading, setLoading] = useState(false)
   const [notFound, setNotFound] = useState(false)
+  const [repoLink, setRepoLink] = useState("<repo's link>")
+  const [currentSha, setCurrentSha] = useState("<commit sha>")
+  const [scroll, setScroll] = useState(true)
   const commitCardsRef = useRef(null)
+  const commandRef = useRef(null)
 
   const fetchLatestCommit = async (username, repo, date, time) => {
     setCommits(null)
@@ -35,9 +39,13 @@ const App = () => {
     }
     setCommits(data)
     setLoading(false)
+    setRepoLink(`https://github.com/${username}/${repo}`)
   }
 
-  if (commitCardsRef.current !== null) commitCardsRef.current.scrollIntoView()
+  if (commitCardsRef.current !== null && scroll) {
+    commitCardsRef.current.scrollIntoView()
+    setScroll(false)
+  }
 
   return (
     <>
@@ -68,17 +76,26 @@ const App = () => {
               </div>
             </div>
             <blockquote className="blockquote mb-2">
-              <p>Get a specific commit via</p>
+              <p ref={commandRef}>Get a specific commit via</p>
             </blockquote>
             <pre>
-              {`git clone <repo's link>`}
+              git clone <span className={repoLink === "<repo's link>" ? "" : "highlight"}>{repoLink}</span>
               <br />
-              {`git checkout <commit sha>`}
+              git checkout <span className={currentSha === "<commit sha>" ? "" : "highlight"}>{currentSha}</span>
             </pre>
           </div>
         </div>
       </div>
-      <Commits refProp={commitCardsRef} notFound={notFound} loading={loading} commits={commits} username={username} repo={repo} />
+      <Commits
+        refProp={commitCardsRef}
+        notFound={notFound}
+        loading={loading}
+        commits={commits}
+        username={username}
+        repo={repo}
+        setCurrentSha={setCurrentSha}
+        commandRef={commandRef}
+      />
       {loading && <Wrapper />}
     </>
   )

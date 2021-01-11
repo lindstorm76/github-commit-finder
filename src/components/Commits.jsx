@@ -1,7 +1,7 @@
 import React from "react"
 import Commit from "./Commit"
 
-const Commits = ({ notFound, refProp, commits, username, repo }) => {
+const Commits = ({ notFound, refProp, commits, username, repo, setCurrentSha, commandRef }) => {
 
   if (commits === null) return null
 
@@ -27,6 +27,8 @@ const Commits = ({ notFound, refProp, commits, username, repo }) => {
         dateTime={dateTime}
         message={message}
         latest={index === 0}
+        setCurrentSha={setCurrentSha}
+        commandRef={commandRef}
       />
     )
   })

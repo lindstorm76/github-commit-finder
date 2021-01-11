@@ -1,12 +1,9 @@
 import React from "react"
 
-const Commit = ({ username, repo, commitSha, dateTime, message, latest }) => {
+const Commit = ({ username, repo, commitSha, dateTime, message, latest, setCurrentSha, commandRef }) => {
   const handleCopy = () => {
-    const container = document.createElement("input")
-    container.value = commitSha
-    container.select()
-    container.setSelectionRange(0, 99999)
-    document.execCommand("copy")
+    setCurrentSha(commitSha)
+    commandRef.current.scrollIntoView()
   }
   return (
     <div className="card m-md-4 m-2" style={{ width: "30rem" }} >
@@ -15,7 +12,7 @@ const Commit = ({ username, repo, commitSha, dateTime, message, latest }) => {
           <span style={{ backgroundColor: "#6B7280" }} className="badge">{dateTime}</span>
           {latest && <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Latest</span>}
         </div>
-        {commitSha} <i className="far fa-copy copy" onClick={handleCopy} ></i>
+        {commitSha} <i className="far fa-copy copy" onClick={handleCopy} onClick={handleCopy} ></i>
       </h5>
       <div className="card-body text-start">
         <p className="card-text">{message}</p>
