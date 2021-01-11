@@ -7,12 +7,15 @@ const Commit = ({ username, repo, commitSha, dateTime, message, latest, setCurre
   }
   return (
     <div className="card m-md-4 m-2" style={{ width: "30rem" }} >
-      <h5 className="card-header position-relative pt-4 px-2 text-center">
+      <h5 className="card-header position-relative pt-4 px-4">
         <div style={{ top: -10, left: 10 }} className="position-absolute" >
           <span style={{ backgroundColor: "#6B7280" }} className="badge">{dateTime}</span>
           {latest && <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Latest</span>}
         </div>
-        {commitSha} <i className="far fa-copy copy" onClick={handleCopy} ></i>
+        {commitSha}
+        <div style={{ top: -10, right: -10 }} className="position-absolute" >
+          <i className="far fa-copy copy" onClick={handleCopy} ></i>
+        </div>
       </h5>
       <div className="card-body text-start">
         <p className="card-text">{message}</p>
