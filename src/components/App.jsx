@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import Form from "./Form"
 import Commits from "./Commits"
 import Wrapper from "./Wrapper"
@@ -10,6 +10,7 @@ const App = () => {
   const [repo, setRepo] = useState(null)
   const [loading, setLoading] = useState(false)
   const [notFound, setNotFound] = useState(false)
+  const commitCardsRef = useRef(null)
 
   const fetchLatestCommit = async (username, repo, date, time) => {
     setCommits(null)
@@ -34,7 +35,9 @@ const App = () => {
     }
     setCommits(data)
     setLoading(false)
-  } 
+  }
+
+  if (commitCardsRef.current !== null) commitCardsRef.current.scrollIntoView()
 
   return (
     <>
@@ -75,7 +78,7 @@ const App = () => {
           </div>
         </div>
       </div>
-      <Commits notFound={notFound} loading={loading} commits={commits} username={username} repo={repo} />
+      <Commits refProp={commitCardsRef} notFound={notFound} loading={loading} commits={commits} username={username} repo={repo} />
       {loading && <Wrapper />}
     </>
   )
