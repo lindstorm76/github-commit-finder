@@ -37,7 +37,7 @@ This project was developed primarily on **React.js** (with Vanilla JS), **Bootst
 🔵 The site is fully responsive, you can use it on mobile
 
  ![mobile-landing-page](https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-landing-page.PNG)
- ![mobile-search-result](https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-result.PNG)
+ ![mobile-search-result](https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-search-result.PNG)
  
 ## Hosting
 
