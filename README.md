@@ -42,7 +42,7 @@ This project was developed primarily on **React.js** (with Vanilla JS), **Bootst
 
 The project is hosted via [Vercel](https://vercel.com/) as it is a static site.
 
-[github-commit-finder.vercel.app](github-commit-finder.vercel.app)
+[github-commit-finder.vercel.app](https://github-commit-finder.vercel.app)
 
 [https://github-commit-finder.lindstorm75.vercel.app](https://github-commit-finder.lindstorm75.vercel.app/)
 
