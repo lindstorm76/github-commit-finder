@@ -25,8 +25,6 @@ const Form = ({ fetchLatestCommit, notFound }) => {
     e.preventDefault()
     const { value: username } = usernameRef.current
     const { value: repo } = repoRef.current
-    // usernameRef.current.value = ""
-    // repoRef.current.value = ""
     setDate(today)
     const [hr, min] = time.split(":")
     fetchLatestCommit(username, repo, date, `${padZeros(+hr - 7, 2)}:${min}`)
@@ -37,17 +35,17 @@ const Form = ({ fetchLatestCommit, notFound }) => {
       {notFound && <div class="alert alert-danger" role="alert">Username or repository not found</div>}
       <div className="mb-3">
         <label htmlFor="" className="form-label">Username</label>
-        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ref={usernameRef} required />
+        <input type="text" className="form-control" aria-describedby="username" ref={usernameRef} required />
       </div>
       <div className="mb-3">
         <label htmlFor="" className="form-label">Repository name</label>
-        <input type="text" className="form-control" ref={repoRef} required />
+        <input type="text" className="form-control" aria-describedby="repository's name" ref={repoRef} required />
       </div>
       <div className="mb-3">
         <label htmlFor="date" className="form-label">Until</label>
-        <input type="date" name="date" className="form-control mb-2" value={date} onChange={handleDateChange} required />
-        <input type="time" className="form-control" value={time} onChange={handleTimeChange} required />
-        <div id="emailHelp" className="form-text">All commits until {time}, {date}</div>
+        <input type="date" name="date" className="form-control mb-2" aria-describedby="date" value={date} onChange={handleDateChange} required />
+        <input type="time" className="form-control" aria-describedby="time" value={time} onChange={handleTimeChange} required />
+        <div className="form-text">All commits until {time}, {date}</div>
       </div>
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">Find</button>

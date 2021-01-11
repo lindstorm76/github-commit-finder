@@ -5,11 +5,11 @@ import loadingAnimation from "../animations/loading.json"
 
 const Commits = ({ notFound, loading, commits, username, repo }) => {
 
+  if (loading && commits === null) return <Animation animationData={loadingAnimation} width={200} height={200} />
+
   if (commits === null) return null
 
-  if (notFound) return null
-
-  if (loading && commits === null) return <Animation animationData={loadingAnimation} width={200} height={200} />
+  if (notFound || commits.length === 0) return null
 
   const commitCards = commits.map((commit, index) => {
     const commitUrl = commit.commit.url.split("/")
@@ -36,7 +36,7 @@ const Commits = ({ notFound, loading, commits, username, repo }) => {
   })
   
   return (
-    <div className="mt-md-4">
+    <div className="mt-md-0">
       <h2 className="d-flex justify-content-center align-items-center flex-column flex-md-row mb-4 mb-md-2">
         <span className="mx-0 mx-sm-2 my-2 my-sm-0">User: <span className="badge" style={{ backgroundColor: "#8B5CF6" }} >{username}</span></span>
         <span>Repository: <span className="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span></span>
