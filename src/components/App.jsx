@@ -39,7 +39,7 @@ const App = () => {
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center" style={{ width: "50rem" }}>
           <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} />
           <div className="mt-2 mt-md-0 d-flex flex-column justify-content-center pt-4">
-            <blockquote class="blockquote mb-2">
+            <blockquote className="blockquote mb-2">
               <p>A commit card contains the followings</p>
             </blockquote>
             <div className="card m-2 mb-md-4" style={{ width: "20rem" }} >
@@ -52,15 +52,15 @@ const App = () => {
               </h5>
               <div className="card-body text-start">
                 <p className="card-text">commit message</p>
-                <a
+                <button
                   className="btn"
                   style={{ backgroundColor: "#3B82F6", color: "white" }}
                 >
                   Commit page
-                </a>
+                </button>
               </div>
             </div>
-            <blockquote class="blockquote mb-2">
+            <blockquote className="blockquote mb-2">
               <p>Get a specific commit via</p>
             </blockquote>
             <pre>
