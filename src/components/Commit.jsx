@@ -12,7 +12,7 @@ const Commit = ({ username, repo, commitSha, dateTime, message, latest, setCurre
           <span style={{ backgroundColor: "#6B7280" }} className="badge">{dateTime}</span>
           {latest && <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Latest</span>}
         </div>
-        {commitSha} <i className="far fa-copy copy" onClick={handleCopy} onClick={handleCopy} ></i>
+        {commitSha} <i className="far fa-copy copy" onClick={handleCopy} ></i>
       </h5>
       <div className="card-body text-start">
         <p className="card-text">{message}</p>

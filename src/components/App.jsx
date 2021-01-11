@@ -12,8 +12,7 @@ const App = () => {
   const [notFound, setNotFound] = useState(false)
   const [repoLink, setRepoLink] = useState("<repo's link>")
   const [currentSha, setCurrentSha] = useState("<commit sha>")
-  const [scroll, setScroll] = useState(true)
-  const commitCardsRef = useRef(null)
+
   const commandRef = useRef(null)
 
   const fetchLatestCommit = async (username, repo, date, time) => {
@@ -34,6 +33,8 @@ const App = () => {
       setNotFound(true)
       setLoading(false)
       setCommits([])
+      setRepoLink("<repo's link>")
+      setCurrentSha("<commit sha>")
       setTimeout(() => setNotFound(false), 3000)
       return
     }
@@ -42,9 +43,8 @@ const App = () => {
     setRepoLink(`https://github.com/${username}/${repo}`)
   }
 
-  if (commitCardsRef.current !== null && scroll) {
-    commitCardsRef.current.scrollIntoView()
-    setScroll(false)
+  if (commandRef.current !== null && !notFound) {
+    commandRef.current.scrollIntoView()
   }
 
   return (
@@ -53,7 +53,7 @@ const App = () => {
         <h1 className="mt-2 mt-md-4">Github Commit Finder</h1>
         <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center col-12 col-md-11 col-lg-10 col-xl-6">
           <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} />
-          <div className="d-flex flex-column justify-content-center py-2 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
+          <div className="d-flex flex-column justify-content-center pt-4 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
             <blockquote className="blockquote mb-2">
               <p>A commit card contains the followings</p>
             </blockquote>
@@ -75,19 +75,18 @@ const App = () => {
                 </button>
               </div>
             </div>
-            <blockquote className="blockquote mb-2">
-              <p ref={commandRef}>Get a specific commit via</p>
+            <blockquote ref={commandRef} className="blockquote mb-2">
+              <p>Get a specific commit via</p>
             </blockquote>
             <pre>
-              git clone <span className={repoLink === "<repo's link>" ? "" : "highlight"}>{repoLink}</span>
+              git clone <span className={repoLink === "<repo's link>" ? "" : "blink highlight"}>{repoLink}</span>
               <br />
-              git checkout <span className={currentSha === "<commit sha>" ? "" : "highlight"}>{currentSha}</span>
+              git checkout <span className={currentSha === "<commit sha>" ? "" : "blink highlight"}>{currentSha}</span>
             </pre>
           </div>
         </div>
       </div>
       <Commits
-        refProp={commitCardsRef}
         notFound={notFound}
         loading={loading}
         commits={commits}

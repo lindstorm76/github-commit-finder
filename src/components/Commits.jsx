@@ -1,7 +1,7 @@
 import React from "react"
 import Commit from "./Commit"
 
-const Commits = ({ notFound, refProp, commits, username, repo, setCurrentSha, commandRef }) => {
+const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef }) => {
 
   if (commits === null) return null
 
@@ -34,7 +34,7 @@ const Commits = ({ notFound, refProp, commits, username, repo, setCurrentSha, co
   })
   
   return (
-    <div ref={refProp}>
+    <div>
       <h2 className="d-flex justify-content-center align-items-center flex-column flex-md-row mb-4 mb-md-2">
         <span className="mx-0 mx-sm-2 my-2 my-sm-0">User: <span className="badge" style={{ backgroundColor: "#8B5CF6" }} >{username}</span></span>
         <span>Repository: <span className="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span></span>
