@@ -5,7 +5,7 @@ import loadingAnimation from "../animations/loading.json"
 
 const Commits = ({ notFound, loading, commits, username, repo }) => {
 
-  if (loading && commits === null) return <Animation animationData={loadingAnimation} width={200} height={200} />
+  // if (loading && commits === null) return <Animation animationData={loadingAnimation} width={200} height={200} />
 
   if (commits === null) return null
 

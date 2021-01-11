@@ -18,3 +18,17 @@ pre {
   display: block;
   word-wrap: break-word;
 }
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1F2937;
+  opacity: .3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}

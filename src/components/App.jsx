@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Form from "./Form"
 import Commits from "./Commits"
+import Wrapper from "./Wrapper"
 
 const App = () => {
 
@@ -32,7 +33,8 @@ const App = () => {
     }
     setCommits(data)
     setLoading(false)
-  }
+  } 
+
   return (
     <>
       <div className="w-100 col-xs-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column align-items-center justify-content-center pt-4">
@@ -73,6 +75,7 @@ const App = () => {
         </div>
       </div>
       <Commits notFound={notFound} loading={loading} commits={commits} username={username} repo={repo} />
+      {loading && <Wrapper />}
     </>
   )
 }
