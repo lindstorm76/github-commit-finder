@@ -33,7 +33,7 @@ const Form = ({ fetchLatestCommit, notFound }) => {
   }
   
   return (
-    <form className="mt-4 w-50" onSubmit={handleSubmit}>
+    <form className="col-11 col-sm-9 col-md-8 col-lg-6" onSubmit={handleSubmit}>
       {notFound && <div class="alert alert-danger" role="alert">Username or repository not found</div>}
       <div className="mb-3">
         <label htmlFor="" className="form-label">Username</label>

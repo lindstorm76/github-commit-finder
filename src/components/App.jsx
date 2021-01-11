@@ -34,15 +34,15 @@ const App = () => {
   }
   return (
     <>
-      <div className="col-xs-12 col-md-6 col-lg-4 col-xl-3 container d-flex flex-column align-items-center justify-content-center pt-4">
+      <div className="w-100 col-xs-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column align-items-center justify-content-center pt-4">
         <h1 className="mt-4">Github Commit Finder</h1>
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center" style={{ width: "50rem" }}>
+        <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center col-12 col-md-11 col-lg-10 col-xl-6">
           <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} />
-          <div className="card my-4 d-flex flex-column justify-content-center py-2 px-4">
+          <div className="my-4 d-flex flex-column justify-content-center py-2 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
             <blockquote className="blockquote mb-2">
               <p>A commit card contains the followings</p>
             </blockquote>
-            <div className="card m-2 mb-md-4" style={{ width: "20rem" }} >
+            <div className="card mt-1 mb-2 mb-md-4 w-100" >
               <h5 className="card-header position-relative pt-4 px-2 text-center">
                 <div style={{ top: -10, left: 10 }} className="position-absolute" >
                   <span style={{ backgroundColor: "#6B7280" }} className="badge">date time</span>
