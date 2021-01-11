@@ -1,5 +1,5 @@
 <h1 align="center">🐱‍👤 Github Commit Finder 🐱‍🏍</h1>
-<h3 align="center">A web site that tells you about every dota 2 hero</h3>
+<h3 align="center">Find repo's commit more easily with Gihub Commit Finder</h3>
 
 # About
 
