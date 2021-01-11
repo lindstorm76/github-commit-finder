@@ -7,19 +7,38 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://git-scm.com/) [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://en.wikipedia.org/wiki/HTML5) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://en.wikipedia.org/wiki/CSS)
 
-Dota 2 Heroes is a web project that mimics Dota 2 official heroes detail [site](https://www.dota2.com/heroes/) in term of filtering heroes, hovering on each of them and each hero's detail page. The hero cards is inspired by the in-game hero picking screen.
+Github Commit Finder is a website that helps you find commits of a repository with date and time filter. The result will be a list of commits in the form of commit cards and it contains enough information for you to checkout that specific commit and see what's changed.
 
-This project was developed primarily on **React.js** (with Vanilla JS), **CSS5** and **HTML**. I recently converted all the JS code to [TypeScript](https://www.typescriptlang.org/) (for statically type-checking).
+This project was developed primarily on **React.js** (with Vanilla JS), **Bootstrap 5**, a little bit of **CSS5** and **HTML**.
 
 # Features
-🐱‍🐉 You can search for specific commits of a repo of a user, both public and private.
+🔵 You can search for specific commits of a repo of a user, both public and private (for private repositories I must be a collborator of that repo).
 
 ![search-with-username-and-repo's-name](https://github.com/lindstorm75/github-commit-finder/blob/main/images/landing-page.PNG)
 
-🐱‍🚀 The list of filtered commits will be shown as commit cards.
+🔵 The list of filtered commits will be shown as commit cards.
 
- ![FilteringHeroes](https://github.com/lindstorm75/github-commit-finder/blob/main/images/commits-result.PNG)
+ ![search-result](https://github.com/lindstorm75/github-commit-finder/blob/main/images/commits-result.PNG)
+ 
+🔵 Each commit card contains the following information of that commit
 
+   ▶ Date and time
+   
+   ▶ Latest commit badge
+   
+   ▶ Commit sha256
+   
+   ▶ Commit message
+   
+   ▶ A button that redirects you to the commit page
+   
+ ![commit-card](https://github.com/lindstorm75/github-commit-finder/blob/main/images/commit-card.PNG)
+
+🔵 The site is fully responsive, you can use it on mobile
+
+ ![mobile-landing-page](https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-landing-page.PNG)
+ ![mobile-search-result](https://github.com/lindstorm75/github-commit-finder/blob/main/images/mobile-result.PNG)
+ 
 ## Hosting
 
 The project is hosted via [Vercel](https://vercel.com/) as it is a static site.
