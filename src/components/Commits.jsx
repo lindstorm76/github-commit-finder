@@ -5,11 +5,11 @@ import loadingAnimation from "../animations/loading.json"
 
 const Commits = ({ notFound, loading, commits, username, repo }) => {
 
+  if (commits === null) return null
+
   if (notFound) return null
 
   if (loading && commits === null) return <Animation animationData={loadingAnimation} width={200} height={200} />
-  
-  if (commits === null) return null
 
   const commitCards = commits.map((commit, index) => {
     const commitUrl = commit.commit.url.split("/")
