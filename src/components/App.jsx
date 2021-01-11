@@ -45,7 +45,7 @@ const App = () => {
         <h1 className="mt-2 mt-md-4">Github Commit Finder</h1>
         <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center col-12 col-md-11 col-lg-10 col-xl-6">
           <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} />
-          <div className="mt-4 d-flex flex-column justify-content-center py-2 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
+          <div className="d-flex flex-column justify-content-center py-2 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
             <blockquote className="blockquote mb-2">
               <p>A commit card contains the followings</p>
             </blockquote>
