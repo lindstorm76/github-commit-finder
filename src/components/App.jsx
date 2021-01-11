@@ -10,12 +10,13 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [notFound, setNotFound] = useState(false)
 
-  const fetchLatestCommit = async (username, repo, date) => {
+  const fetchLatestCommit = async (username, repo, date, time) => {
+    setCommits(null)
     setNotFound(false)
     setLoading(true)
     setUsername(username)
     setRepo(repo)
-    const res = await fetch(`https://api.github.com/repos/${username}/${repo}/commits?until=${date}T23:59:59`, { 
+    const res = await fetch(`https://api.github.com/repos/${username}/${repo}/commits?until=${date}T${time}:00Z`, { 
       method: 'GET', 
       headers: new Headers({
         'Authorization': `token ${process.env.REACT_APP_TOKEN}`, 

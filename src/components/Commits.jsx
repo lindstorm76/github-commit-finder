@@ -43,7 +43,7 @@ const Commits = ({ notFound, loading, commits, username, repo }) => {
     <div className="mt-5">
       <h2 className="d-flex justify-content-center align-items-center flex-column flex-md-row mb-4 mb-md-2">
         <span className="mx-0 mx-sm-2 my-2 my-sm-0">User: <span className="badge bg-primary">{username}</span></span>
-        <span>Repository: <span class="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span></span>
+        <span>Repository: <span className="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span></span>
       </h2>
       <div className="d-flex flex-wrap justify-content-center">
         {commitCards}

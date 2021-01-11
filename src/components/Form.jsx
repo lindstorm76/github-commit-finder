@@ -7,13 +7,18 @@ const Form = ({ fetchLatestCommit }) => {
 
   const now = new Date()
   const today = `${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${now.getDate()}`
-
+  const current = `${now.getHours()}:${now.getMinutes()}`
   const [date, setDate] = useState(today)
+  const [time, setTime] = useState(current)
   const usernameRef = useRef(null)
   const repoRef = useRef(null)
 
   const handleDateChange = (e) => {
     setDate(e.target.value)
+  }
+
+  const handleTimeChange = (e) => {
+    setTime(e.target.value)
   }
 
   const handleSubmit = (e) => {
@@ -23,7 +28,8 @@ const Form = ({ fetchLatestCommit }) => {
     usernameRef.current.value = ""
     repoRef.current.value = ""
     setDate(today)
-    fetchLatestCommit(username, repo, date)
+    const [hr, min] = time.split(":")
+    fetchLatestCommit(username, repo, date, `${padZeros(+hr - 7, 2)}:${min}`)
   }
   
   return (
@@ -38,8 +44,9 @@ const Form = ({ fetchLatestCommit }) => {
       </div>
       <div className="mb-3">
         <label htmlFor="date" className="form-label">Until</label>
-        <input type="date" name="date" className="form-control" value={date} onChange={handleDateChange} />
-        <div id="emailHelp" className="form-text">All commits until 23:59:59, {date}</div>
+        <input type="date" name="date" className="form-control mb-2" value={date} onChange={handleDateChange} />
+        <input type="time" className="form-control" value={time} onChange={handleTimeChange} />
+        <div id="emailHelp" className="form-text">All commits until {time}, {date}</div>
       </div>
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">Find</button>
