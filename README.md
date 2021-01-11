@@ -1,4 +1,4 @@
-<h1 align="center">🐱‍👤 Github Commit Finder 🐱‍🏍</h1>
+<h1 align="center">Github Commit Finder 🐱‍🏍</h1>
 <h3 align="center">Find repo's commits more easily with Gihub Commit Finder</h3>
 
 # About
