@@ -1,7 +1,7 @@
 import React from "react"
 import Lottie from "react-lottie"
 
-export default Animation = ({ animationData, width, height }) => {
+const Animation = ({ animationData, width, height }) => {
   const style = {
     width: "100vw",
     height: "100vh",
@@ -32,3 +32,5 @@ export default Animation = ({ animationData, width, height }) => {
     </div>
   )
 }
+
+export default Animation

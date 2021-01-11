@@ -6,8 +6,8 @@ const Form = ({ fetchLatestCommit }) => {
   )
 
   const now = new Date()
-  const today = `${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${now.getDate()}`
-  const current = `${now.getHours()}:${now.getMinutes()}`
+  const today = `${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${padZeros(now.getDate(), 2)}`
+  const current = `${padZeros(now.getHours(), 2)}:${padZeros(now.getMinutes(), 2)}`
   const [date, setDate] = useState(today)
   const [time, setTime] = useState(current)
   const usernameRef = useRef(null)
@@ -25,8 +25,8 @@ const Form = ({ fetchLatestCommit }) => {
     e.preventDefault()
     const { value: username } = usernameRef.current
     const { value: repo } = repoRef.current
-    usernameRef.current.value = ""
-    repoRef.current.value = ""
+    // usernameRef.current.value = ""
+    // repoRef.current.value = ""
     setDate(today)
     const [hr, min] = time.split(":")
     fetchLatestCommit(username, repo, date, `${padZeros(+hr - 7, 2)}:${min}`)
