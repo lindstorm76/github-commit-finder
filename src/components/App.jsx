@@ -32,7 +32,40 @@ const App = () => {
     <>
       <div className="col-xs-12 col-md-6 col-lg-4 col-xl-3 container d-flex flex-column align-items-center justify-content-center pt-4">
         <h1 className="mt-4">Github Commit Finder</h1>
-        <Form fetchLatestCommit={fetchLatestCommit} />
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center" style={{ width: "50rem" }}>
+          <Form fetchLatestCommit={fetchLatestCommit} />
+          <div className="mt-2 mt-md-0 d-flex flex-column justify-content-center pt-4">
+            <blockquote class="blockquote mb-2">
+              <p>A commit card contains the followings</p>
+            </blockquote>
+            <div className="card m-2 mb-md-4" style={{ width: "20rem" }} >
+              <h5 className="card-header position-relative pt-4 px-2 text-center">
+                <div style={{ top: -10, left: 10 }} className="position-absolute" >
+                  <span style={{ backgroundColor: "#6B7280" }} className="badge">date time</span>
+                  <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Lastest?</span>
+                </div>
+                commit sha <i className="far fa-copy copy" ></i>
+              </h5>
+              <div className="card-body text-start">
+                <p className="card-text">commit message</p>
+                <a
+                  className="btn"
+                  style={{ backgroundColor: "#3B82F6", color: "white" }}
+                >
+                  Commit page
+                </a>
+              </div>
+            </div>
+            <blockquote class="blockquote mb-2">
+              <p>Get a specific commit via</p>
+            </blockquote>
+            <pre>
+              {`git clone <repo's link>`}
+              <br />
+              {`git checkout <commit sha>`}
+            </pre>
+          </div>
+        </div>
       </div>
       <Commits notFound={notFound} loading={loading} commits={commits} username={username} repo={repo} />
     </>

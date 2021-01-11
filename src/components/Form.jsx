@@ -33,7 +33,7 @@ const Form = ({ fetchLatestCommit }) => {
   }
   
   return (
-    <form className="mt-4 w-100" onSubmit={handleSubmit}>
+    <form className="mt-4 w-50" onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="" className="form-label">Username</label>
         <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ref={usernameRef} />
