@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 
-const Form = ({ fetchLatestCommit }) => {
+const Form = ({ fetchLatestCommit, notFound }) => {
   const padZeros  = (str, len) => (
     String(str).length >= len ? str : String(str).padStart(len, '0')
   )
@@ -34,18 +34,19 @@ const Form = ({ fetchLatestCommit }) => {
   
   return (
     <form className="mt-4 w-50" onSubmit={handleSubmit}>
+      {notFound && <div class="alert alert-danger" role="alert">Username or repository not found</div>}
       <div className="mb-3">
         <label htmlFor="" className="form-label">Username</label>
-        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ref={usernameRef} />
+        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ref={usernameRef} required />
       </div>
       <div className="mb-3">
         <label htmlFor="" className="form-label">Repository name</label>
-        <input type="text" className="form-control" ref={repoRef} />
+        <input type="text" className="form-control" ref={repoRef} required />
       </div>
       <div className="mb-3">
         <label htmlFor="date" className="form-label">Until</label>
-        <input type="date" name="date" className="form-control mb-2" value={date} onChange={handleDateChange} />
-        <input type="time" className="form-control" value={time} onChange={handleTimeChange} />
+        <input type="date" name="date" className="form-control mb-2" value={date} onChange={handleDateChange} required />
+        <input type="time" className="form-control" value={time} onChange={handleTimeChange} required />
         <div id="emailHelp" className="form-text">All commits until {time}, {date}</div>
       </div>
       <div className="d-grid">
