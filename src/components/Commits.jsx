@@ -1,7 +1,7 @@
 import React from "react"
 import Commit from "./Commit"
 
-const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef }) => {
+const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef, padZeroes }) => {
 
   if (commits === null) return null
 
@@ -17,7 +17,7 @@ const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef 
     const hr = +rawTime[0] + 7
     const mn = +rawTime[1]
     const sec = +rawTime[2]
-    const dateTime = `${rawDate} ${hr}:${mn}:${sec}`
+    const dateTime = `${rawDate} ${hr === 24 ? "00" : padZeroes(hr, 2)}:${padZeroes(mn, 2)}:${padZeroes(sec, 2)}`
     return (
       <Commit
         key={commit.commit.committer.date}

@@ -15,6 +15,10 @@ const App = () => {
 
   const commandRef = useRef(null)
 
+  const padZeros  = (str, len) => (
+    String(str).length >= len ? str : String(str).padStart(len, '0')
+  )
+
   const fetchLatestCommit = async (username, repo, date, time) => {
     setCommits(null)
     setNotFound(false)
@@ -52,7 +56,7 @@ const App = () => {
       <div className="w-100 col-xs-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column align-items-center justify-content-center pt-4">
         <h1 className="mt-2 mt-md-4" style={{ color: "#3B82F6" }}>Github Commit Finder</h1>
         <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center col-12 col-md-11 col-lg-10 col-xl-6">
-          <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} />
+          <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} padZeros={padZeros} />
           <div className="d-flex flex-column justify-content-center pt-4 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
             <blockquote className="blockquote mb-2">
               <p>A commit card contains the followings</p>
@@ -94,6 +98,7 @@ const App = () => {
         repo={repo}
         setCurrentSha={setCurrentSha}
         commandRef={commandRef}
+        padZeros={padZeros}
       />
       {loading && <Wrapper />}
     </>

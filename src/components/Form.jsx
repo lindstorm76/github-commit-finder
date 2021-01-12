@@ -1,9 +1,6 @@
 import React, { useState, useRef } from "react"
 
-const Form = ({ fetchLatestCommit, notFound }) => {
-  const padZeros  = (str, len) => (
-    String(str).length >= len ? str : String(str).padStart(len, '0')
-  )
+const Form = ({ fetchLatestCommit, notFound, padZeros }) => {
 
   const now = new Date()
   const today = `${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${padZeros(now.getDate(), 2)}`
