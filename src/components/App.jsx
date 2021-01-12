@@ -67,7 +67,7 @@ const App = () => {
                   <span style={{ backgroundColor: "#6B7280" }} className="badge">date time</span>
                   <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Lastest?</span>
                 </div>
-                commit sha <i className="far fa-copy copy" ></i>
+                commit sha256 <i className="far fa-copy copy" ></i>
               </h5>
               <div className="card-body text-start">
                 <p className="card-text">commit message</p>
