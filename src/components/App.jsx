@@ -15,7 +15,7 @@ const App = () => {
 
   const commandRef = useRef(null)
 
-  const padZeros  = (str, len) => (
+  const padZeros = (str, len) => (
     String(str).length >= len ? str : String(str).padStart(len, '0')
   )
 
