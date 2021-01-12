@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 
-const Form = ({ fetchLatestCommit, notFound, padZeros }) => {
+const Form = ({ fetchLatestCommit, notFound, empty, padZeros }) => {
 
   const now = new Date()
   const today = `${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${padZeros(now.getDate(), 2)}`
@@ -30,6 +30,7 @@ const Form = ({ fetchLatestCommit, notFound, padZeros }) => {
   return (
     <form className="col-11 col-sm-9 col-md-8 col-lg-6" onSubmit={handleSubmit}>
       {notFound && <div className="alert alert-danger" role="alert">Username or repository not found</div>}
+      {empty && <div className="alert alert-danger" role="alert">No commits found before that particular date and time</div>}
       <div className="mb-3">
         <label htmlFor="" className="form-label">Username</label>
         <input type="text" className="form-control" aria-describedby="username" ref={usernameRef} required />

@@ -10,6 +10,7 @@ const App = () => {
   const [repo, setRepo] = useState(null)
   const [loading, setLoading] = useState(false)
   const [notFound, setNotFound] = useState(false)
+  const [empty, setEmpty] = useState(false)
   const [repoLink, setRepoLink] = useState("<repo's link>")
   const [currentSha, setCurrentSha] = useState("<commit sha>")
 
@@ -39,12 +40,19 @@ const App = () => {
       setCommits([])
       setRepoLink("<repo's link>")
       setCurrentSha("<commit sha>")
-      setTimeout(() => setNotFound(false), 3000)
+      setTimeout(() => setNotFound(false), 5000)
       return
+    }
+    if (data.length === 0) {
+      setLoading(false)
+      setEmpty(true)
+      setRepoLink("<repo's link>")
+      setCurrentSha("<commit sha>")
+      setTimeout(() => setEmpty(false), 5000)
     }
     setCommits(data)
     setLoading(false)
-    setRepoLink(`https://github.com/${username}/${repo}`)
+    setRepoLink(`https://github.com/${username}/${repo}.git`)
   }
 
   if (commandRef.current !== null && !notFound) {
@@ -56,7 +64,7 @@ const App = () => {
       <div className="w-100 col-xs-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column align-items-center justify-content-center pt-4">
         <h1 className="mt-2 mt-md-4" style={{ color: "#3B82F6" }}>Github Commit Finder</h1>
         <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center col-12 col-md-11 col-lg-10 col-xl-6">
-          <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} padZeros={padZeros} />
+          <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} empty={empty} padZeros={padZeros} />
           <div className="d-flex flex-column justify-content-center pt-4 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
             <blockquote className="blockquote mb-2">
               <p>A commit card contains the followings</p>

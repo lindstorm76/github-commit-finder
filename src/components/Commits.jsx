@@ -12,12 +12,13 @@ const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef,
     const message = commit.commit.message.split("\n")[0]
     const commitSha = commitUrl[commitUrl.length - 1]
     const rawDateTime = commit.commit.committer.date.split("T")
-    const rawDate = rawDateTime[0]
+    const rawDate = rawDateTime[0].split("-")
     const rawTime = rawDateTime[1].split("Z")[0].split(":")
     const hr = +rawTime[0] + 7
+    rawDate[2] = hr >= 24 ? padZeros(+rawDate[2] + 1) : rawDate[2]
     const mn = +rawTime[1]
     const sec = +rawTime[2]
-    const dateTime = `${rawDate} ${hr === 24 ? "00" : padZeros(hr, 2)}:${padZeros(mn, 2)}:${padZeros(sec, 2)}`
+    const dateTime = `${rawDate.join("-")} ${hr >= 24 ? padZeros(hr % 24, 2) : padZeros(hr, 2)}:${padZeros(mn, 2)}:${padZeros(sec, 2)}`
     return (
       <Commit
         key={commit.commit.committer.date}
