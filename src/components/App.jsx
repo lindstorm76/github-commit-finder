@@ -26,7 +26,7 @@ const App = () => {
     setLoading(true)
     setUsername(username)
     setRepo(repo)
-    const res = await fetch(`https://api.github.com/repos/${username}/${repo}/commits?until=${date}T${time}:00Z`, { 
+    const res = await fetch(`https://api.github.com/repos/${username}/${repo}/commits?until=${date}T${time}Z`, { 
       method: 'GET', 
       headers: new Headers({
         'Authorization': `token ${process.env.REACT_APP_TOKEN}`, 

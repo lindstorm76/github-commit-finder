@@ -24,7 +24,10 @@ const Form = ({ fetchLatestCommit, notFound, empty, padZeros }) => {
     const { value: repo } = repoRef.current
     setDate(today)
     const [hr, min] = time.split(":")
-    fetchLatestCommit(username, repo, date, `${padZeros(+hr - 7, 2)}:${min}`)
+    const GMT0 = new Date(`${date}T${hr}:${min}:00+14:00`)
+    const centralDate = `${GMT0.getFullYear()}-${padZeros(GMT0.getMonth() + 1, 2)}-${padZeros(GMT0.getDate(), 2)}`
+    const centralTime = `${padZeros(GMT0.getHours(), 2)}:${padZeros(GMT0.getMinutes(), 2)}:00`
+    fetchLatestCommit(username, repo, centralDate, centralTime)
   }
   
   return (
