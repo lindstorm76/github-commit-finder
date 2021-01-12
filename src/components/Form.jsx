@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 
-const Form = ({ fetchLatestCommit, notFound, padZeros }) => {
+const Form = ({ fetchLatestCommit, notFound, empty, padZeros }) => {
 
   const now = new Date()
   const today = `${now.getFullYear()}-${padZeros(now.getMonth() + 1, 2)}-${padZeros(now.getDate(), 2)}`
@@ -24,12 +24,16 @@ const Form = ({ fetchLatestCommit, notFound, padZeros }) => {
     const { value: repo } = repoRef.current
     setDate(today)
     const [hr, min] = time.split(":")
-    fetchLatestCommit(username, repo, date, `${padZeros(+hr - 7, 2)}:${min}`)
+    const GMT0 = new Date(`${date}T${hr}:${min}:00+14:00`)
+    const centralDate = `${GMT0.getFullYear()}-${padZeros(GMT0.getMonth() + 1, 2)}-${padZeros(GMT0.getDate(), 2)}`
+    const centralTime = `${padZeros(GMT0.getHours(), 2)}:${padZeros(GMT0.getMinutes(), 2)}:00`
+    fetchLatestCommit(username, repo, centralDate, centralTime)
   }
   
   return (
     <form className="col-11 col-sm-9 col-md-8 col-lg-6" onSubmit={handleSubmit}>
       {notFound && <div className="alert alert-danger" role="alert">Username or repository not found</div>}
+      {empty && <div className="alert alert-danger" role="alert">No commits found before that particular date and time</div>}
       <div className="mb-3">
         <label htmlFor="" className="form-label">Username</label>
         <input type="text" className="form-control" aria-describedby="username" ref={usernameRef} required />

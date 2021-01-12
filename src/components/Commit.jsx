@@ -2,7 +2,7 @@ import React from "react"
 
 const Commit = ({ username, repo, commitSha, dateTime, message, latest, setCurrentSha, commandRef }) => {
   const handleCopy = () => {
-    setCurrentSha(commitSha + ".git")
+    setCurrentSha(commitSha)
     commandRef.current.scrollIntoView()
   }
   return (
@@ -17,16 +17,16 @@ const Commit = ({ username, repo, commitSha, dateTime, message, latest, setCurre
           <i className="far fa-copy copy" onClick={handleCopy} ></i>
         </div>
       </h5>
-      <div className="card-body text-start">
+      <div className="card-body text-start d-flex flex-column">
         <p className="card-text">{message}</p>
         <a
           target="_blank"
           rel="noreferrer"
           href={`https://github.com/${username}/${repo}/commit/${commitSha}`}
-          className="btn"
-          style={{ backgroundColor: "#3B82F6", color: "white" }}
+          className="btn align-self-end"
+          style={{ backgroundColor: "#3B82F6", color: "white", width: "fit-content", marginTop: "auto" }}
         >
-          Commit page
+          Go to commit page
         </a>
       </div>
     </div>

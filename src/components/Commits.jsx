@@ -11,20 +11,17 @@ const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef,
     const commitUrl = commit.commit.url.split("/")
     const message = commit.commit.message.split("\n")[0]
     const commitSha = commitUrl[commitUrl.length - 1]
-    const rawDateTime = commit.commit.committer.date.split("T")
-    const rawDate = rawDateTime[0]
-    const rawTime = rawDateTime[1].split("Z")[0].split(":")
-    const hr = +rawTime[0] + 7
-    const mn = +rawTime[1]
-    const sec = +rawTime[2]
-    const dateTime = `${rawDate} ${hr === 24 ? "00" : padZeros(hr, 2)}:${padZeros(mn, 2)}:${padZeros(sec, 2)}`
+    const GMT0 = commit.commit.committer.date.replace("Z", "+00:00")
+    const GMT7 = new Date(GMT0)
+    const date = `${GMT7.getFullYear()}-${padZeros(GMT7.getMonth() + 1, 2)}-${padZeros(GMT7.getDate(), 2)}`
+    const time = `${padZeros(GMT7.getHours(), 2)}:${padZeros(GMT7.getMinutes(), 2)}:${padZeros(GMT7.getSeconds(), 2)}`
     return (
       <Commit
         key={commit.commit.committer.date}
         username={username}
         repo={repo}
         commitSha={commitSha}
-        dateTime={dateTime}
+        dateTime={`${date} ${time}`}
         message={message}
         latest={index === 0}
         setCurrentSha={setCurrentSha}
