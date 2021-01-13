@@ -24,8 +24,6 @@ const App = () => {
     setCommits(null)
     setNotFound(false)
     setLoading(true)
-    setUsername(username)
-    setRepo(repo)
     const res = await fetch(`https://api.github.com/repos/${username}/${repo}/commits?until=${date}T${time}Z`, { 
       method: 'GET', 
       headers: new Headers({
@@ -34,6 +32,9 @@ const App = () => {
       })
     })
     const data = await res.json()
+    const fields = data[0].commit.url.split("/")
+    setUsername(fields[4])
+    setRepo(fields[5])
     if (data.message === "Not Found") {
       setNotFound(true)
       setLoading(false)
@@ -52,7 +53,7 @@ const App = () => {
     }
     setCommits(data)
     setLoading(false)
-    setRepoLink(`https://github.com/${username}/${repo}.git`)
+    setRepoLink(`https://github.com/${fields[4]}/${fields[5]}.git`)
   }
 
   if (commandRef.current !== null && !notFound) {
@@ -72,18 +73,19 @@ const App = () => {
             <div className="card mt-1 mb-2 mb-md-4 w-100" >
               <h5 className="card-header position-relative pt-4 px-2 text-center">
                 <div style={{ top: -10, left: 10 }} className="position-absolute" >
-                  <span style={{ backgroundColor: "#6B7280" }} className="badge">date time</span>
+                  <span style={{ backgroundColor: "#6B7280" }} className="badge">DateTime</span>
+                  <span style={{ backgroundColor: "#EC4899" }} className="badge ms-2">Author</span>
                   <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Lastest?</span>
                 </div>
                 commit sha256 <i className="far fa-copy copy" ></i>
               </h5>
-              <div className="card-body text-start">
-                <p className="card-text">commit message</p>
+              <div className="card-body text-start d-flex flex-column">
+                <p className="card-text">message</p>
                 <button
-                  className="btn"
-                  style={{ backgroundColor: "#3B82F6", color: "white" }}
+                  className="btn align-self-end"
+                  style={{ backgroundColor: "#3B82F6", color: "white", width: "fit-content", marginTop: "auto" }}
                 >
-                  Commit page
+                  Go to commit page
                 </button>
               </div>
             </div>

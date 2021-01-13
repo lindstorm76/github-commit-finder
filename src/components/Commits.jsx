@@ -10,6 +10,7 @@ const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef,
   const commitCards = commits.map((commit, index) => {
     const commitUrl = commit.commit.url.split("/")
     const message = commit.commit.message.split("\n")[0]
+    const author = commit.author === null ? null : commit.author.login
     const commitSha = commitUrl[commitUrl.length - 1]
     const GMT0 = commit.commit.committer.date.replace("Z", "+00:00")
     const GMT7 = new Date(GMT0)
@@ -23,6 +24,7 @@ const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef,
         commitSha={commitSha}
         dateTime={`${date} ${time}`}
         message={message}
+        author={author}
         latest={index === 0}
         setCurrentSha={setCurrentSha}
         commandRef={commandRef}
