@@ -77,7 +77,10 @@ const App = () => {
                   <span style={{ backgroundColor: "#EC4899" }} className="badge ms-2">Author</span>
                   <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Lastest?</span>
                 </div>
-                commit sha256 <i className="far fa-copy copy" ></i>
+                commit sha256
+                <div style={{ top: -10, right: 10 }} className="position-absolute" >
+                  <i className="far fa-copy copy" ></i>
+                </div>
               </h5>
               <div className="card-body text-start d-flex flex-column">
                 <p className="card-text">message</p>
