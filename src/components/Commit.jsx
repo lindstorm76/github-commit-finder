@@ -1,6 +1,6 @@
 import React from "react"
 
-const Commit = ({ username, repo, commitSha, dateTime, message, latest, setCurrentSha, commandRef }) => {
+const Commit = ({ username, repo, commitSha, dateTime, author, message, latest, setCurrentSha, commandRef }) => {
   const handleCopy = () => {
     setCurrentSha(commitSha)
     commandRef.current.scrollIntoView()
@@ -10,6 +10,7 @@ const Commit = ({ username, repo, commitSha, dateTime, message, latest, setCurre
       <h5 className="card-header position-relative pt-4 px-4">
         <div style={{ top: -10, left: 10 }} className="position-absolute" >
           <span style={{ backgroundColor: "#6B7280" }} className="badge">{dateTime}</span>
+          <span style={{ backgroundColor: "#EC4899" }} className="badge ms-2">{author}</span>
           {latest && <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Latest</span>}
         </div>
         {commitSha}
