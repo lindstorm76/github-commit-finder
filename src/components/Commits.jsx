@@ -34,11 +34,11 @@ const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef,
   
   return (
     <div>
-      <h2 className="d-flex justify-content-center align-items-center flex-column flex-md-row mb-4 mb-md-2">
+      <h2 className="d-flex justify-content-center align-items-center flex-column flex-md-row mb-4">
         <span className="mx-0 mx-sm-2 my-2 my-sm-0">User: <span className="badge" style={{ backgroundColor: "#8B5CF6" }} >{username}</span></span>
         <span>Repository: <span className="badge" style={{ backgroundColor: "#EF4444" }}>{repo}</span></span>
       </h2>
-      <div className="d-flex flex-wrap justify-content-center mt-4">
+      <div className="d-flex flex-wrap justify-content-center mt-md-4">
         {commitCards}
       </div>
     </div>
