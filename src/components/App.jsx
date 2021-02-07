@@ -32,9 +32,6 @@ const App = () => {
       })
     })
     const data = await res.json()
-    const fields = data[0].commit.url.split("/")
-    setUsername(fields[4])
-    setRepo(fields[5])
     if (data.message === "Not Found") {
       setNotFound(true)
       setLoading(false)
@@ -50,10 +47,14 @@ const App = () => {
       setRepoLink("<repo's link>")
       setCurrentSha("<commit sha>")
       setTimeout(() => setEmpty(false), 5000)
+    } else {
+      const fields = data[0].commit.url.split("/")
+      setUsername(fields[4])
+      setRepo(fields[5])
     }
     setCommits(data)
     setLoading(false)
-    setRepoLink(`https://github.com/${fields[4]}/${fields[5]}.git`)
+    setRepoLink(`https://github.com/${username}/${repo}.git`)
   }
 
   if (commandRef.current !== null && !notFound) {
