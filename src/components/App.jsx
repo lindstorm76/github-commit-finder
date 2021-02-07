@@ -65,7 +65,7 @@ const App = () => {
     <>
       <div className="w-100 col-xs-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column align-items-center justify-content-center pt-4">
         <h1 className="mt-2 mt-md-4" style={{ color: "#3B82F6" }}>Github Commit Finder</h1>
-        <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center col-12 col-md-11 col-lg-10 col-xl-6">
+        <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center col-12 col-md-11 col-lg-10 col-xl-7">
           <Form fetchLatestCommit={fetchLatestCommit} notFound={notFound} empty={empty} padZeros={padZeros} />
           <div className="d-flex flex-column justify-content-center pt-4 px-4 col-12 col-sm-10 col-md-8 col-lg-6">
             <blockquote className="blockquote mb-2">
@@ -78,7 +78,10 @@ const App = () => {
                   <span style={{ backgroundColor: "#EC4899" }} className="badge ms-2">Author</span>
                   <span style={{ backgroundColor: "#10B981" }} className="badge ms-2">Lastest?</span>
                 </div>
-                commit sha256 <i className="far fa-copy copy" ></i>
+                commit sha256
+                <div style={{ top: -10, right: 10 }} className="position-absolute" >
+                  <i className="far fa-copy copy" ></i>
+                </div>
               </h5>
               <div className="card-body text-start d-flex flex-column">
                 <p className="card-text">message</p>

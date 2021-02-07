@@ -6,8 +6,8 @@ const Commit = ({ username, repo, commitSha, dateTime, author, message, latest, 
     commandRef.current.scrollIntoView()
   }
   return (
-    <div className="card m-md-4 m-2" style={{ width: "30rem" }} >
-      <h5 className="card-header position-relative pt-4 px-4">
+    <div className="card mb-4 mx-2 m-lg-3" style={{ width: "28rem" }} >
+      <h5 className="card-header position-relative pt-4 px-1">
         <div style={{ top: -10, left: 10 }} className="position-absolute" >
           <span style={{ backgroundColor: "#6B7280" }} className="badge">{dateTime}</span>
           {author && <span style={{ backgroundColor: "#EC4899" }} className="badge ms-2">{author}</span>}
