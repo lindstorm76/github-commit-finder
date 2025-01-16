@@ -10,6 +10,7 @@ const Animation = ({ animationData, width, height }) => {
       preserveAspectRatio: 'xMidYMid slice'
     }
   }
+  
   return (
     <div>
       <Lottie

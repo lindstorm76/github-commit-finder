@@ -24,6 +24,7 @@ const App = () => {
     setCommits(null)
     setNotFound(false)
     setLoading(true)
+
     const res = await fetch(`https://api.github.com/repos/${username}/${repo}/commits?until=${date}T${time}Z`, { 
       method: 'GET', 
       headers: new Headers({
@@ -31,30 +32,36 @@ const App = () => {
         'Content-Type': 'application/x-www-form-urlencoded'
       })
     })
-    const data = await res.json()
-    if (data.message === "Not Found") {
+
+    if (res.status === 404) {
+      console.log('here')
       setNotFound(true)
       setLoading(false)
       setCommits([])
       setRepoLink("<repo's link>")
       setCurrentSha("<commit sha>")
       setTimeout(() => setNotFound(false), 5000)
+
       return
     }
-    if (data.length === 0) {
+
+    if (res.status !== 200) {
       setLoading(false)
       setEmpty(true)
       setRepoLink("<repo's link>")
       setCurrentSha("<commit sha>")
       setTimeout(() => setEmpty(false), 5000)
     } else {
+      const data = await res.json()
       const fields = data[0].commit.url.split("/")
+      
+      setCommits(data)
       setUsername(fields[4])
       setRepo(fields[5])
+      setRepoLink(`https://github.com/${username}/${repo}.git`)
     }
-    setCommits(data)
+
     setLoading(false)
-    setRepoLink(`https://github.com/${username}/${repo}.git`)
   }
 
   if (commandRef.current !== null && !notFound) {

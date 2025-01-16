@@ -20,12 +20,14 @@ const Form = ({ fetchLatestCommit, notFound, empty, padZeros }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    
     const { value: username } = usernameRef.current
     const { value: repo } = repoRef.current
     const [hr, min] = time.split(":")
     const GMT0 = new Date(`${date}T${hr}:${min}:00+14:00`)
     const centralDate = `${GMT0.getFullYear()}-${padZeros(GMT0.getMonth() + 1, 2)}-${padZeros(GMT0.getDate(), 2)}`
     const centralTime = `${padZeros(GMT0.getHours(), 2)}:${padZeros(GMT0.getMinutes(), 2)}:00`
+
     fetchLatestCommit(username, repo, centralDate, centralTime)
   }
   

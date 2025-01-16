@@ -3,6 +3,7 @@ import React from "react"
 const Commit = ({ username, repo, commitSha, dateTime, author, message, latest, setCurrentSha, commandRef }) => {
   const handleCopy = () => {
     setCurrentSha(commitSha)
+    
     commandRef.current.scrollIntoView()
   }
   return (

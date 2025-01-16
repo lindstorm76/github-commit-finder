@@ -16,9 +16,10 @@ const Commits = ({ notFound, commits, username, repo, setCurrentSha, commandRef,
     const GMT7 = new Date(GMT0)
     const date = `${GMT7.getFullYear()}-${padZeros(GMT7.getMonth() + 1, 2)}-${padZeros(GMT7.getDate(), 2)}`
     const time = `${padZeros(GMT7.getHours(), 2)}:${padZeros(GMT7.getMinutes(), 2)}:${padZeros(GMT7.getSeconds(), 2)}`
+    
     return (
       <Commit
-        key={commit.commit.committer.date}
+        key={`commit_${index}:${commit.commit.committer.date}`}
         username={username}
         repo={repo}
         commitSha={commitSha}
